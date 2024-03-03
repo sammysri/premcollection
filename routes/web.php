@@ -18,19 +18,6 @@ use App\Http\Controllers\MenuController;
 |
 */
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/form', function () {
-    return view('form');
-});
-Route::get('/table', function () {
-    return view('table');
-});
-
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', function () {
         return view('login');
