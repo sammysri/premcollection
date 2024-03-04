@@ -18,25 +18,23 @@
                         #
                       </th>
                       <th class="text-center">Image</th>
-                      <th class="text-center">Name</th>
+                      <th class="text-center">Menu</th>
                       <th class="text-center">Description</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    @forelse($hotels as $hotel)
+                    @forelse($dinnerMenus as $menu)
                       <tr class="align-middle">
-                        <td>{{$hotel->id}}</td>
+                        <td>{{$menu->id}}</td>
                         <td class="text-center">
                           <div class="avatar avatar-md">
-                            <img class="avatar-img" src="{{$hotel->image}}" alt="{{$hotel->name}}">
+                            <img class="avatar-img" src="{{$menu->image}}" alt="{{$menu->name}}">
                           </div>
                         </td>
-                        <td>{{$hotel->name}}
-                          <div class="small text-medium-emphasis">{{$hotel->address}}</div>
-                          <div class="fw-semibold">{!! $hotel->price_text !!}</div>
+                        <td>{{$menu->name}}
                         </td>
-                        <td>{{$hotel->address}}</td>
+                        <td>{{$menu->description}}</td>
                         <td>
                           <div class="dropdown">
                             <button class="btn btn-transparent p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,10 +44,10 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                               <!-- <a class="dropdown-item" href="#">Info</a> -->
-                              <a class="dropdown-item" href="{{route('hotels.show',$hotel->id )}}">Edit</a>
+                              <a class="dropdown-item" href="{{route('dinner-menus.show',$menu->id )}}">Edit</a>
 
-                              <a class="dropdown-item text-danger" href="#" onclick="document.getElementById('p-form{{$hotel->id}}').submit()">Delete</a>
-                              <form action="{{ route('hotels.destroy', $hotel) }}" method="post" id="p-form{{$hotel->id}}">
+                              <a class="dropdown-item text-danger" href="#" onclick="document.getElementById('p-form{{$menu->id}}').submit()">Delete</a>
+                              <form action="{{ route('dinner-menus.destroy', $menu) }}" method="post" id="p-form{{$menu->id}}">
                                 @csrf
                                 @method('DELETE')
                               </form>

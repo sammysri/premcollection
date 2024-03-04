@@ -110,8 +110,8 @@
             </svg> Dinner Menu
           </a>
           <ul class="nav-group-items">
-            <li class="nav-item"><a class="nav-link" href="{{route('hotels.create')}}"><span class="nav-icon"></span> Add Dinner Menu</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{route('hotels.index')}}"><span class="nav-icon"></span> All Dinner Menu</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('dinner-menus.create')}}"><span class="nav-icon"></span> Add Dinner Menu</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('dinner-menus.index')}}"><span class="nav-icon"></span> All Dinner Menu</a></li>
           </ul>
         </li>
       </ul>

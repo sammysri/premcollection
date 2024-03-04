@@ -15,30 +15,23 @@
             <div class="card-body">
               <div class="example">
                 <p>
-                  {{ $errors->first('hotel_error') }}
+                  {{ $errors->first('astrologer_error') }}
                 </p>
-                <form action="{{$hotel ? route('hotels.update', $hotel->id) : route('hotels.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{$astrologer ? route('astrologers.update', $astrologer->id) : route('astrologers.store')}}" method="post" enctype="multipart/form-data">
                   @csrf 
-                  @if($hotel ) @method('PUT') @endif
+                  @if($astrologer ) @method('PUT') @endif
                   <div class="form-floating mb-3">
-                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter Name" value="{{$hotel ? $hotel->name : old('name')}}">
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter Name" value="{{$astrologer ? $astrologer->name : old('name')}}">
                     <label for="name">Name</label>
                     <p><code>
                       {{ $errors->first('name') }}
                     </code></p>
                   </div>
                   <div class="form-floating mb-3">
-                    <input class="form-control" id="address" name="address" type="text" placeholder="Enter Address" value="{{$hotel ? $hotel->address : old('address')}}">
-                    <label for="address">Address</label>
+                    <input class="form-control" id="experience" name="experience" type="text" placeholder="Enter Experience" value="{{$astrologer ? $astrologer->experience : old('experience')}}">
+                    <label for="experience">Experience</label>
                     <p><code>
-                      {{ $errors->first('address') }}
-                    </code></p>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input class="form-control" id="price" name="price" type="number" placeholder="Enter Price" value="{{$hotel ? $hotel->price : old('price')}}">
-                    <label for="price">Price</label>
-                    <p><code>
-                      {{ $errors->first('price') }}
+                      {{ $errors->first('experience') }}
                     </code></p>
                   </div>
                   <div class="form-floating mb-3">
@@ -48,14 +41,14 @@
                       {{ $errors->first('image') }}
                     </code></p>
                   </div>
-                  @if($hotel && $hotel->image)
+                  @if($astrologer && $astrologer->image)
                     <div class="mb-3">
-                        <img src="{{$hotel->image}}" style="width:100px; ">
+                        <img src="{{$astrologer->image}}" style="width:100px; ">
                     </div>
                   @endif
                   <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" id="description" rows="6" placeholder="Description" name="description">{{$hotel ? $hotel->description : old('description')}}</textarea>
+                    <textarea class="form-control" id="description" rows="6" placeholder="Description" name="description">{{$astrologer ? $astrologer->description : old('description')}}</textarea>
                     <p><code>
                       {{ $errors->first('description') }}
                     </code></p>
