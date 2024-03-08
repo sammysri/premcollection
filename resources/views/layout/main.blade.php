@@ -90,6 +90,7 @@
           <ul class="nav-group-items">
             <li class="nav-item"><a class="nav-link" href="{{route('doctors.create')}}"><span class="nav-icon"></span> Add Doctor</a></li>
             <li class="nav-item"><a class="nav-link" href="{{route('doctors.index')}}"><span class="nav-icon"></span> All Doctors</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('category')}}"><span class="nav-icon"></span> All Categories</a></li>
           </ul>
         </li>
         <li class="nav-group">
@@ -114,6 +115,31 @@
             <li class="nav-item"><a class="nav-link" href="{{route('dinner-menus.index')}}"><span class="nav-icon"></span> All Dinner Menu</a></li>
           </ul>
         </li>
+        @admin
+          <li class="nav-group">
+            <a class="nav-link nav-group-toggle" href="#">
+              <svg class="nav-icon">
+                <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
+              </svg> Admin Management
+            </a>
+            <ul class="nav-group-items">
+              <li class="nav-item"><a class="nav-link" href="{{url('admin/management/create')}}"><span class="nav-icon"></span> Add New Admin</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{url('admin/management')}}"><span class="nav-icon"></span> All Admins</a></li>
+            </ul>
+          </li>
+        @endadmin
+        <li class="nav-group">
+          <a class="nav-link nav-group-toggle" href="#">
+            <svg class="nav-icon">
+              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
+            </svg> User Management
+          </a>
+          <ul class="nav-group-items">
+            <li class="nav-item"><a class="nav-link" href="{{url('user/management/create')}}"><span class="nav-icon"></span> Add New User</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url('user/management')}}"><span class="nav-icon"></span> All Users</a></li>
+          </ul>
+        </li>
+
       </ul>
     </div>
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
@@ -131,7 +157,7 @@
           
           <ul class="header-nav ms-3">
             <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/8.jpg')}}" alt="user@email.com"></div>
+                <div class="avatar avatar-md"><img class="avatar-img" src="https://placehold.co/125x125?text=P" alt="user"></div>
               </a>
               <div class="dropdown-menu dropdown-menu-end pt-0">
                 <div class="dropdown-header bg-light py-2">
@@ -142,9 +168,14 @@
                   <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
                 </svg> Lock Account</a> -->
                 @auth
-                  <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit()">
+                  <a class="dropdown-item" href="{{route('changePassword')}}">
                     <svg class="icon me-2">
-                      <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                      <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout')}}"></use>
+                    </svg> Change password
+                  </a>
+                  <a class="dropdown-item" href="javascript:void(0);" style="cursor: pointer;" onclick="document.getElementById('logout-form').submit()">
+                    <svg class="icon me-2">
+                      <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout')}}"></use>
                     </svg> Logout
                   </a>
                   <form method="post" action="{{route('logout')}}" id="logout-form">@csrf</form>

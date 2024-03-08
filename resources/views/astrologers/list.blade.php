@@ -19,7 +19,7 @@
                       </th>
                       <th class="text-center">Image</th>
                       <th class="text-center">Astrologer</th>
-                      <th class="text-center">Description</th>
+                      <!-- <th class="text-center">Description</th> -->
                       <th></th>
                     </tr>
                   </thead>
@@ -35,7 +35,7 @@
                         <td>{{$astrologer->name}}
                           <div class="fw-semibold">{{ $astrologer->experience }}</div>
                         </td>
-                        <td>{{$astrologer->description}}</td>
+                        {{-- <td>{{$astrologer->description}}</td> --}}
                         <td>
                           <div class="dropdown">
                             <button class="btn btn-transparent p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

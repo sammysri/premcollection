@@ -19,7 +19,7 @@
                       </th>
                       <th class="text-center">Image</th>
                       <th class="text-center">Doctor</th>
-                      <th class="text-center">Description</th>
+                      <!-- <th class="text-center">Description</th> -->
                       <th></th>
                     </tr>
                   </thead>
@@ -34,9 +34,9 @@
                         </td>
                         <td>{{$doctor->name}}
                           <div class="small text-medium-emphasis">{{$doctor->degree}}</div>
-                          <div class="fw-semibold">{{ $doctor->speciality }} | {{ $doctor->experience }}</div>
+                          <div class="fw-semibold">{{  $doctor->categories()->count() ? implode(',', $doctor->categories()->pluck('name')->all()) : '' }} | {{ $doctor->experience }}</div>
                         </td>
-                        <td>{{$doctor->description}}</td>
+                        {{-- <td>{{$doctor->description}}</td> --}}
                         <td>
                           <div class="dropdown">
                             <button class="btn btn-transparent p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

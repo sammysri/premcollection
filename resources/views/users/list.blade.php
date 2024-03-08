@@ -17,37 +17,30 @@
                       <th class="text-center">
                         #
                       </th>
-                      <th class="text-center">Image</th>
-                      <th class="text-center">Menu</th>
-                      <!-- <th class="text-center">Description</th> -->
+                      <th class="text-center">Name</th>
+                      <th class="text-center">Email</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    @forelse($dinnerMenus as $menu)
+                    @forelse($users as $user)
                       <tr class="align-middle">
-                        <td>{{$menu->id}}</td>
-                        <td class="text-center">
-                          <div class="avatar avatar-md">
-                            <img class="avatar-img" src="{{$menu->image}}" alt="{{$menu->name}}">
-                          </div>
-                        </td>
-                        <td>{{$menu->name}}
-                        </td>
-                        {{-- <td>{{$menu->description}}</td> --}}
+                        <td>{{$user->id}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
                         <td>
                           <div class="dropdown">
                             <button class="btn btn-transparent p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <svg class="icon">
-                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-options"></use>
+                                <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-options')}}"></use>
                               </svg>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                               <!-- <a class="dropdown-item" href="#">Info</a> -->
-                              <a class="dropdown-item" href="{{route('dinner-menus.show',$menu->id )}}">Edit</a>
+                              <a class="dropdown-item" href="{{url($type.'/management/'.$user->id)}}">Edit</a>
 
-                              <a class="dropdown-item text-danger" href="#" onclick="document.getElementById('p-form{{$menu->id}}').submit()">Delete</a>
-                              <form action="{{ route('dinner-menus.destroy', $menu) }}" method="post" id="p-form{{$menu->id}}">
+                              <a class="dropdown-item text-danger" href="#" onclick="document.getElementById('p-form{{$user->id}}').submit()">Delete</a>
+                              <form action="{{url($type.'/management/'.$user->id)}}" method="post" id="p-form{{$user->id}}">
                                 @csrf
                                 @method('DELETE')
                               </form>
@@ -57,7 +50,7 @@
                         </td>
                       </tr>
                     @empty
-                      <tr><td clospan="5">No records found.</td></tr>
+                      <tr><td clospan="4">No records found.</td></tr>
                     @endforelse
                   </tbody>
                 </table>

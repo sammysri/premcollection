@@ -14,9 +14,9 @@
             </div>
             <div class="card-body">
               <div class="example">
-                <p>
+                <p class="text-medium-emphasis small"><code>
                   {{ $errors->first('hotel_error') }}
-                </p>
+                </code></p>
                 <form action="{{$hotel ? route('hotels.update', $hotel->id) : route('hotels.store')}}" method="post" enctype="multipart/form-data">
                   @csrf 
                   @if($hotel ) @method('PUT') @endif
@@ -53,13 +53,13 @@
                         <img src="{{$hotel->image}}" style="width:100px; ">
                     </div>
                   @endif
-                  <div class="mb-3">
+                  <!-- <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
                     <textarea class="form-control" id="description" rows="6" placeholder="Description" name="description">{{$hotel ? $hotel->description : old('description')}}</textarea>
                     <p><code>
                       {{ $errors->first('description') }}
                     </code></p>
-                  </div>
+                  </div> -->
                   <button class="btn btn-primary" type="submit">Save</button>
                 </form>
               </div>              

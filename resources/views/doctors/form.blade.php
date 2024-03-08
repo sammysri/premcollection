@@ -14,9 +14,9 @@
             </div>
             <div class="card-body">
               <div class="example">
-                <p>
+                <p class="text-medium-emphasis small"><code>
                   {{ $errors->first('doctor_error') }}
-                </p>
+                </code></p>
                 <form action="{{$doctor ? route('doctors.update', $doctor->id) : route('doctors.store')}}" method="post" enctype="multipart/form-data">
                   @csrf 
                   @if($doctor ) @method('PUT') @endif
@@ -34,9 +34,20 @@
                       {{ $errors->first('degree') }}
                     </code></p>
                   </div>
-                  <div class="form-floating mb-3">
+                  {{-- <div class="form-floating mb-3">
                     <input class="form-control" id="speciality" name="speciality" type="text" placeholder="Enter Speciality" value="{{$doctor ? $doctor->speciality : old('speciality')}}">
                     <label for="speciality">Speciality</label>
+                    <p><code>
+                      {{ $errors->first('speciality') }}
+                    </code></p>
+                  </div> --}}
+                  <div class="mb-3">
+                    <label for="speciality">Speciality</label>
+                    <select class="form-control" id="speciality" name="speciality[]" multiple>
+                      @foreach($categories as $_categoryk => $_categoryv)
+                      <option value="{{$_categoryk}}" {{ in_array($_categoryk, $savedCategoryIds) ? 'selected' : '' }}>{{$_categoryv}}</option>
+                      @endforeach
+                    </select>
                     <p><code>
                       {{ $errors->first('speciality') }}
                     </code></p>
@@ -60,13 +71,13 @@
                         <img src="{{$doctor->image}}" style="width:100px; ">
                     </div>
                   @endif
-                  <div class="mb-3">
+                  <!-- <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
                     <textarea class="form-control" id="description" rows="6" placeholder="Description" name="description">{{$doctor ? $doctor->description : old('description')}}</textarea>
                     <p><code>
                       {{ $errors->first('description') }}
                     </code></p>
-                  </div>
+                  </div> -->
                   <button class="btn btn-primary" type="submit">Save</button>
                 </form>
               </div>              

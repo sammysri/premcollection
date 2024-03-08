@@ -14,9 +14,9 @@
             </div>
             <div class="card-body">
               <div class="example">
-                <p>
+                <p class="text-medium-emphasis small"><code>
                   {{ $errors->first('astrologer_error') }}
-                </p>
+                </code></p>
                 <form action="{{$astrologer ? route('astrologers.update', $astrologer->id) : route('astrologers.store')}}" method="post" enctype="multipart/form-data">
                   @csrf 
                   @if($astrologer ) @method('PUT') @endif
@@ -46,13 +46,13 @@
                         <img src="{{$astrologer->image}}" style="width:100px; ">
                     </div>
                   @endif
-                  <div class="mb-3">
+                  <!-- <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
                     <textarea class="form-control" id="description" rows="6" placeholder="Description" name="description">{{$astrologer ? $astrologer->description : old('description')}}</textarea>
                     <p><code>
                       {{ $errors->first('description') }}
                     </code></p>
-                  </div>
+                  </div> -->
                   <button class="btn btn-primary" type="submit">Save</button>
                 </form>
               </div>              
