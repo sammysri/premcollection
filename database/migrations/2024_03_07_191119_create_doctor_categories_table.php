@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('doctor_id');
             $table->integer('category_id');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }

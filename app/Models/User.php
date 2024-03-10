@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -23,7 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'active'
     ];
 
     /**
@@ -75,6 +77,13 @@ class User extends Authenticatable
     public function bookedDinnerMenu(): MorphToMany
     {
         return $this->morphedByMany(DinnerMenu::class, 'user_booking_services');
+    }
+    /**
+     * Get the details associated with the user.
+     */
+    public function userDetails(): HasOne
+    {
+        return $this->hasOne(UserDetails::class, '');
     }
     
 }

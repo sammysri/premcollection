@@ -6,6 +6,10 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\AstrologerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +48,13 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('doctors', DoctorController::class);
     Route::resource('hotels', HotelController::class);
     Route::resource('astrologers', AstrologerController::class);
+    Route::resource('cars', CarController::class);
+    Route::resource('banners', BannerController::class);
+    Route::get('album-image/{id}', [AlbumController::class, 'getAlbumImage'])->name('albumImages');
+    Route::post('album-image/{id}', [AlbumController::class, 'postalbumImage'])->name('albumImagePost');
+    Route::delete('album-image/{id}/{imageId}', [AlbumController::class, 'deletealbumImage'])->name('albumImageDelete');
+    Route::resource('albums', AlbumController::class);
+    Route::resource('stores', StoreController::class);
 
     foreach(['user', 'admin'] as $type) {
         Route::group([
@@ -52,6 +63,8 @@ Route::middleware(['auth'])->group(function () {
         ], function() {
             Route::resource('management', UserController::class);
         });
-    }
+    }    
+    Route::get('user-details/{id}', [UserController::class, 'getuserDetails'])->name('userDetails');
+    Route::post('user-details/{id}', [UserController::class, 'postUserDetails'])->name('userDetailsPost');
     
 });

@@ -108,11 +108,55 @@
           <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
               <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
+            </svg> Cars
+          </a>
+          <ul class="nav-group-items">
+            <li class="nav-item"><a class="nav-link" href="{{route('cars.create')}}"><span class="nav-icon"></span> Add Car</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('cars.index')}}"><span class="nav-icon"></span> All Cars</a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <a class="nav-link nav-group-toggle" href="#">
+            <svg class="nav-icon">
+              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
             </svg> Dinner Menu
           </a>
           <ul class="nav-group-items">
             <li class="nav-item"><a class="nav-link" href="{{route('dinner-menus.create')}}"><span class="nav-icon"></span> Add Dinner Menu</a></li>
             <li class="nav-item"><a class="nav-link" href="{{route('dinner-menus.index')}}"><span class="nav-icon"></span> All Dinner Menu</a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <a class="nav-link nav-group-toggle" href="#">
+            <svg class="nav-icon">
+              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
+            </svg> Banners
+          </a>
+          <ul class="nav-group-items">
+            <li class="nav-item"><a class="nav-link" href="{{route('banners.create')}}"><span class="nav-icon"></span> Add Banner</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('banners.index')}}"><span class="nav-icon"></span> All Banners</a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <a class="nav-link nav-group-toggle" href="#">
+            <svg class="nav-icon">
+              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
+            </svg> Stores
+          </a>
+          <ul class="nav-group-items">
+            <li class="nav-item"><a class="nav-link" href="{{route('stores.create')}}"><span class="nav-icon"></span> Add Store</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('stores.index')}}"><span class="nav-icon"></span> All Stores</a></li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <a class="nav-link nav-group-toggle" href="#">
+            <svg class="nav-icon">
+              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
+            </svg> Albums
+          </a>
+          <ul class="nav-group-items">
+            <li class="nav-item"><a class="nav-link" href="{{route('albums.create')}}"><span class="nav-icon"></span> Add Album</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('albums.index')}}"><span class="nav-icon"></span> All Albums</a></li>
           </ul>
         </li>
         @admin

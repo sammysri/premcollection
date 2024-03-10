@@ -28,9 +28,16 @@
                       <tr class="align-middle">
                         <td>{{$astrologer->id}}</td>
                         <td class="text-center">
-                          <div class="avatar avatar-md">
-                            <img class="avatar-img" src="{{$astrologer->image}}" alt="{{$astrologer->name}}">
-                          </div>
+                          @if($astrologer->image)
+                            <div class="avatar avatar-md">
+                              <img class="avatar-img" src="{{$astrologer->image}}" alt="{{$astrologer->name}}">
+                              @if($astrologer->active == 1)
+                              <span class="avatar-status bg-success"></span>
+                              @elseif($astrologer->active == 0)
+                              <span class="avatar-status bg-danger"></span>
+                              @else @endif
+                            </div>
+                          @endif
                         </td>
                         <td>{{$astrologer->name}}
                           <div class="fw-semibold">{{ $astrologer->experience }}</div>

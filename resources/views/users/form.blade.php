@@ -47,6 +47,16 @@
                       <label class="form-check-label" for="reset_password">Reset Password</label>
                     </div>
                   @endif
+                  <div class="mb-3">
+                    <label for="active">Active</label>
+                    <select class="form-control" id="active" name="active">
+                      <option value="0" {{ $user && $user->active == 0 ? 'selected' : '' }}>No</option>
+                      <option value="1" {{ $user && $user->active == 1 ? 'selected' : '' }}>Yes</option>
+                    </select>
+                    <p><code>
+                      {{ $errors->first('active') }}
+                    </code></p>
+                  </div>
                   <button class="btn btn-primary" type="submit">Save</button>
                 </form>
               </div>              

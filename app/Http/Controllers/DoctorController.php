@@ -59,6 +59,7 @@ class DoctorController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
                 'degree' => $request->degree,
+                'active' => $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0,
                 //'speciality' => $request->speciality,
                 'image' => $request->image ? $this->upload($request, 'doctor-images') : 'https://placehold.co/50x50/png',
                 'experience' => $request->experience
@@ -133,6 +134,7 @@ class DoctorController extends Controller
             $doctor->degree = $request->degree;
             //$doctor->speciality = $request->speciality;
             $doctor->experience = $request->experience;
+            $doctor->active = $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0;
             $doctor->image = $request->image ? $this->upload($request, 'doctor-images') : $doctor->image;
 
             // return $doctor;
@@ -182,6 +184,7 @@ class DoctorController extends Controller
                 $category = new Category;
             }
             $category->name = $request->name;
+            $category->active = $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0;
 
             if($category->save()) {
                 return redirect()->route('category');

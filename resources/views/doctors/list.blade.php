@@ -28,9 +28,16 @@
                       <tr class="align-middle">
                         <td>{{$doctor->id}}</td>
                         <td class="text-center">
-                          <div class="avatar avatar-md">
-                            <img class="avatar-img" src="{{$doctor->image}}" alt="{{$doctor->name}}">
-                          </div>
+                          @if($doctor->image)
+                            <div class="avatar avatar-md">
+                              <img class="avatar-img" src="{{$doctor->image}}" alt="{{$doctor->name}}">
+                              @if($doctor->active == 1)
+                              <span class="avatar-status bg-success"></span>
+                              @elseif($doctor->active == 0)
+                              <span class="avatar-status bg-danger"></span>
+                              @else @endif
+                            </div>
+                          @endif
                         </td>
                         <td>{{$doctor->name}}
                           <div class="small text-medium-emphasis">{{$doctor->degree}}</div>

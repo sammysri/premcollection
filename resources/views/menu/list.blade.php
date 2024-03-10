@@ -28,11 +28,18 @@
                       <tr class="align-middle">
                         <td>{{$menu->id}}</td>
                         <td class="text-center">
-                          <div class="avatar avatar-md">
-                            <img class="avatar-img" src="{{$menu->image}}" alt="{{$menu->name}}">
-                          </div>
+                          @if($menu->image)
+                            <div class="avatar avatar-md">
+                              <img class="avatar-img" src="{{$menu->image}}" alt="{{$menu->name}}">
+                              @if($menu->active == 1)
+                              <span class="avatar-status bg-success"></span>
+                              @elseif($menu->active == 0)
+                              <span class="avatar-status bg-danger"></span>
+                              @else @endif
+                            </div>
+                          @endif
                         </td>
-                        <td>{{$menu->name}}
+                        <td class="text-center">{{$menu->name}}
                         </td>
                         {{-- <td>{{$menu->description}}</td> --}}
                         <td>

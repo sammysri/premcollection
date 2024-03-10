@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('degree');
             $table->string('speciality')->nullable();
             $table->string('experience');
-            $table->string('image');
+            $table->string('image')->nullable();
+            $table->boolean('active')->default(true);
             $table->softDeletes(); 
             $table->timestamps();
         });

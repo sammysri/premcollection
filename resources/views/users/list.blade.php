@@ -19,6 +19,7 @@
                       </th>
                       <th class="text-center">Name</th>
                       <th class="text-center">Email</th>
+                        <th class="text-center">Active</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -26,8 +27,10 @@
                     @forelse($users as $user)
                       <tr class="align-middle">
                         <td>{{$user->id}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
+                        <td class="text-center">{{$user->name}}</td>
+                        <td class="text-center">{{$user->email}}</td>
+                        <td class="text-center">{{$user->active == 1 ? 'Yes' : ($user->active == 0 ? 'No' : '')}}
+                          </td>
                         <td>
                           <div class="dropdown">
                             <button class="btn btn-transparent p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,6 +41,7 @@
                             <div class="dropdown-menu dropdown-menu-end">
                               <!-- <a class="dropdown-item" href="#">Info</a> -->
                               <a class="dropdown-item" href="{{url($type.'/management/'.$user->id)}}">Edit</a>
+                              <a class="dropdown-item" href="{{route('userDetails',$user->id)}}">Details</a>
 
                               <a class="dropdown-item text-danger" href="#" onclick="document.getElementById('p-form{{$user->id}}').submit()">Delete</a>
                               <form action="{{url($type.'/management/'.$user->id)}}" method="post" id="p-form{{$user->id}}">

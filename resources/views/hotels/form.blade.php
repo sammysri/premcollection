@@ -41,6 +41,16 @@
                       {{ $errors->first('price') }}
                     </code></p>
                   </div>
+                  <div class="mb-3">
+                    <label for="active">Active</label>
+                    <select class="form-control" id="active" name="active">
+                      <option value="0" {{ $hotel && $hotel->active == 0 ? 'selected' : '' }}>No</option>
+                      <option value="1" {{ $hotel && $hotel->active == 1 ? 'selected' : '' }}>Yes</option>
+                    </select>
+                    <p><code>
+                      {{ $errors->first('active') }}
+                    </code></p>
+                  </div>
                   <div class="form-floating mb-3">
                     <input class="form-control" id="image" name="image" type="file">
                     <label for="image">Image</label>

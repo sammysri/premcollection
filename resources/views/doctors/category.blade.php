@@ -26,6 +26,16 @@
                       {{ $errors->first('name') }}
                     </code></p>
                   </div>
+                  <div class="mb-3">
+                    <label for="active">Active</label>
+                    <select class="form-control" id="active" name="active">
+                      <option value="0" {{ $category && $category->active == 0 ? 'selected' : '' }}>No</option>
+                      <option value="1" {{ $category && $category->active == 1 ? 'selected' : '' }}>Yes</option>
+                    </select>
+                    <p><code>
+                      {{ $errors->first('active') }}
+                    </code></p>
+                  </div>
                   <button class="btn btn-primary" type="submit">Save</button>
                 </form>
               </div>  
@@ -39,6 +49,7 @@
                           #
                         </th>
                         <th class="text-center">Category</th>
+                        <th class="text-center">Active</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -47,6 +58,8 @@
                         <tr class="align-middle">
                           <td>{{$_category->id}}</td>
                           <td>{{$_category->name}}
+                          </td>
+                          <td>{{$_category->active == 1 ? 'Yes' : ($_category->active == 0 ? 'No' : '')}}
                           </td>
                           <td>
                             <a class="dropdown-item" href="{{route('category',$_category->id )}}">Edit</a>

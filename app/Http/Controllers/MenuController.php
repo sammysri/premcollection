@@ -46,6 +46,7 @@ class MenuController extends Controller
             $dinnerMenu = DinnerMenu::create([
                 'name' => $request->name,
                 'description' => $request->description,
+                'active' => $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0,
                 'image' => $request->image ? $this->upload($request, 'menu-images') : 'https://placehold.co/50x50/png'
             ]);
 
@@ -102,6 +103,7 @@ class MenuController extends Controller
 
             $dinnerMenu->name = $request->name;
             $dinnerMenu->description = $request->description;
+            $dinnerMenu->active = $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0;
             $dinnerMenu->image = $request->image ? $this->upload($request, 'menu-images') : $dinnerMenu->image;
 
             // return $dinnerMenu;

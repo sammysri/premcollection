@@ -47,6 +47,7 @@ class AstrologerController extends Controller
             $astrologer = Astrologer::create([
                 'name' => $request->name,
                 'description' => $request->description,
+                'active' => $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0,
                 'image' => $request->image ? $this->upload($request, 'astrologer-images') : 'https://placehold.co/50x50/png',
                 'experience' => $request->experience
             ]);
@@ -106,6 +107,7 @@ class AstrologerController extends Controller
             $astrologer->name = $request->name;
             $astrologer->description = $request->description;
             $astrologer->experience = $request->experience;
+            $astrologer->active = $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0;
             $astrologer->image = $request->image ? $this->upload($request, 'astrologer-images') : $astrologer->image;
 
             // return $astrologer;

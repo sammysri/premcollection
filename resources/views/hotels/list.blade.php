@@ -28,11 +28,18 @@
                       <tr class="align-middle">
                         <td>{{$hotel->id}}</td>
                         <td class="text-center">
-                          <div class="avatar avatar-md">
-                            <img class="avatar-img" src="{{$hotel->image}}" alt="{{$hotel->name}}">
-                          </div>
+                          @if($hotel->image)
+                            <div class="avatar avatar-md">
+                              <img class="avatar-img" src="{{$hotel->image}}" alt="{{$hotel->name}}">
+                              @if($hotel->active == 1)
+                              <span class="avatar-status bg-success"></span>
+                              @elseif($hotel->active == 0)
+                              <span class="avatar-status bg-danger"></span>
+                              @else @endif
+                            </div>
+                          @endif
                         </td>
-                        <td>{{$hotel->name}}
+                        <td class="text-center">{{$hotel->name}}
                           <div class="small text-medium-emphasis">{{$hotel->address}}</div>
                           <div class="fw-semibold">{!! $hotel->price_text !!}</div>
                         </td>

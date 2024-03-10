@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use App\Models\{User, UserDetails};
+use App\Models\Store;
 use Illuminate\Support\Facades\DB;
+use App\Http\Traits\ImageTrait;
+use Carbon\Carbon; 
 
 class UserController extends Controller
 {
+    use ImageTrait;
     public function postLogin(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
@@ -112,6 +116,7 @@ class UserController extends Controller
         $type = $request->route()->getPrefix();
         try{
             //return $request->all();
+            //return $request->has('active') ? ($request->active == '1' ? 1 : 0) : 0;
             $credentials = $request->validate([
                 'name' => ['required'],
                 'email' => ['required', 'unique:users', 'email'],
@@ -122,6 +127,7 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
+                'active' => $request->has('active') ? ($request->active == '1' ? 1 : 0) : 0,
                 'role' => $role
             ]);
 
@@ -187,6 +193,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             if( $request->reset_password && $request->reset_password == 1 ) $user->password = bcrypt($request->password);
+            $user->active = $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0;
 
             if($user->save()) {
                 DB::commit();
@@ -217,5 +224,59 @@ class UserController extends Controller
         return redirect('user/management');
     }
 
+    public function getuserDetails(string $id)
+    {
+        $user = User::findOrFail($id);
+        $details = $user->userDetails()->first();
+        $stores = Store::orderBy('name', 'asc')->pluck( 'name', 'id')->all();
+        $title = 'Details of '.$user->name;
+        return view('users.details', compact('title', 'user', 'details', 'stores'));
+    }
+    public function postUserDetails(Request $request, string $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            $details = $user->userDetails()->first();
+            $cValidation = $details && $details->id ? 'unique:user_details,card_number,'.$details->id : 'unique:user_details,card_number';
+            $credentials = $request->validate([
+                'phone' => ['nullable', 'numeric'],
+                'whatsapp' => ['nullable', 'numeric'],
+                'store_id' => ['sometimes','nullable','exists:stores,id'],            
+                'card_number' => ['nullable', $cValidation]
+                //'card_number' => 'nullable|unique:user_details,card_number'.$details && $details->id ? ','.$details->id : '',
+            ]);
+            if($details) {
+
+            }
+            else {
+                $details = new UserDetails(); 
+            }
+            $details->phone = $request->phone ? $request->phone : null;
+            $details->whatsapp = $request->whatsapp ? $request->whatsapp : null;
+            $details->card_number = $request->card_number ? $request->card_number : null;
+            $details->dob = $request->dob ? Carbon::parse($request->dob)->format('y-m-d') : null;
+            $details->address = $request->address ? $request->address : null;
+            $details->bio = $request->bio ? $request->bio : null;
+            $details->club_name = $request->club_name ? $request->club_name : null;
+            $details->store_id = $request->store_id ? $request->store_id : null;
+            $details->image = $request->image ? $this->upload($request, 'user-images') : ($details && $details->id ? $details->image : 'https://placehold.co/50x50/png');
+            $details->club_name = $request->club_name ? $request->club_name : null;
+            //return $details;
+            if($user->userDetails()->save($details)) {
+                return redirect('/user-details/'.$id);
+            }
+    
+            return back()->withErrors([
+                'details_error' => 'Error in saving record.',
+            ])->withInput();
+            
+        }catch(\Exception $e){
+            DB::rollback();
+            
+            return back()->withErrors([
+                'details_error' => 'Error in saving record. '.$e->getMessage(),
+            ])->withInput();
+        }
+    }
 
 }

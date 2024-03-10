@@ -48,6 +48,7 @@ class HotelController extends Controller
             ]);
             $hotel = Hotel::create([
                 'name' => $request->name,
+                'active' => $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0,
                 'description' => $request->description,
                 'address' => $request->address,
                 'price' => $request->price,
@@ -114,6 +115,7 @@ class HotelController extends Controller
             $hotel->price = $request->price;
             $hotel->image = $request->image ? $this->upload($request, 'hotel-images') : $hotel->image;
             $hotel->price_text = '₹'.$request->price.' onwards';
+            $hotel->active = $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0;
 
             // return $hotel;
 
