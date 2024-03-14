@@ -159,6 +159,14 @@
             <li class="nav-item"><a class="nav-link" href="{{route('albums.index')}}"><span class="nav-icon"></span> All Albums</a></li>
           </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('bookedServices')}}">
+            <svg class="nav-icon">
+              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer')}}"></use>
+            </svg> Booking Request
+            <!-- <span class="badge badge-sm bg-info ms-auto">NEW</span> -->
+          </a>
+        </li>
         @admin
           <li class="nav-group">
             <a class="nav-link nav-group-toggle" href="#">

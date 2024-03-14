@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\{User, UserDetails};
+use App\Models\{User, UserDetails, UserBookingService, Hotel, Doctor, Astrologer, DinnerMenu, Car};
 use App\Models\Store;
 use Illuminate\Support\Facades\DB;
 use App\Http\Traits\ImageTrait;
@@ -264,6 +264,119 @@ class UserController extends Controller
             //return $details;
             if($user->userDetails()->save($details)) {
                 return redirect('/user-details/'.$id);
+            }
+    
+            return back()->withErrors([
+                'details_error' => 'Error in saving record.',
+            ])->withInput();
+            
+        }catch(\Exception $e){
+            DB::rollback();
+            
+            return back()->withErrors([
+                'details_error' => 'Error in saving record. '.$e->getMessage(),
+            ])->withInput();
+        }
+    }
+
+    public function getBookedServices(Request $request)
+    {
+        $bookedServices = UserBookingService::orderBy('id', 'desc')->with('user')->paginate(10);
+        // return $bookedServices->items();
+        $_bookedServices = [];
+        foreach ($bookedServices->items() as $service) {
+            $serviceId = $service->service_id;
+            $serviceType = $service->service_type;
+
+            if (str_contains($serviceType, 'Hotel')) {
+                $_service = Hotel::find($serviceId, ['name', 'image']);
+                array_push($_bookedServices, [
+                    'id' => $service->id,
+                    'user_id' => $service->user->id,
+                    'user_name' => $service->user->name,
+                    'booked_on' => Carbon::parse($service->created_at)->format('d-m-Y'),
+                    'status' => $service->status,
+                    'extra_data' => json_decode($service->extra_data),
+                    'service' => $_service,
+                    'service_type' => 'Hotel',
+                ]);
+            } elseif (str_contains( $serviceType, 'Doctor')) {
+                $_service = Doctor::find($serviceId, ['name', 'image']);
+                array_push($_bookedServices, [
+                    'id' => $service->id,
+                    'user_id' => $service->user->id,
+                    'user_name' => $service->user->name,
+                    'booked_on' => Carbon::parse($service->created_at)->format('d-m-Y'),
+                    'status' => $service->status,
+                    'extra_data' => json_decode($service->extra_data),
+                    'service' => $_service,
+                    'service_type' => 'Doctor',
+                ]);
+            } elseif (str_contains( $serviceType, 'Astrologer')) {
+                $_service = Astrologer::find($serviceId, ['name', 'image']);
+                array_push($_bookedServices, [
+                    'id' => $service->id,
+                    'user_id' => $service->user->id,
+                    'user_name' => $service->user->name,
+                    'booked_on' => Carbon::parse($service->created_at)->format('d-m-Y'),
+                    'status' => $service->status,
+                    'extra_data' => json_decode($service->extra_data),
+                    'service' => $_service,
+                    'service_type' => 'Astrologer',
+                ]);
+            } elseif (str_contains( $serviceType, 'DinnerMenu')) {
+                $_service = DinnerMenu::find($serviceId, ['name', 'image']);
+                array_push($_bookedServices, [
+                    'id' => $service->id,
+                    'user_id' => $service->user->id,
+                    'user_name' => $service->user->name,
+                    'booked_on' => Carbon::parse($service->created_at)->format('d-m-Y'),
+                    'status' => $service->status,
+                    'extra_data' => json_decode($service->extra_data),
+                    'service' => $_service,
+                    'service_type' => 'DinnerMenu',
+                ]);
+            } elseif (str_contains( $serviceType, 'Car')) {
+                $_service = Car::find($serviceId, ['name', 'image']);
+                array_push($_bookedServices, [
+                    'id' => $service->id,
+                    'user_id' => $service->user->id,
+                    'user_name' => $service->user->name,
+                    'booked_on' => Carbon::parse($service->created_at)->format('d-m-Y'),
+                    'status' => $service->status,
+                    'extra_data' => json_decode($service->extra_data),
+                    'service' => $_service,
+                    'service_type' => 'Car',
+                ]);
+            } else {
+                array_push($_bookedServices, [
+                    'id' => $service->id,
+                    'user_id' => $service->user->id,
+                    'user_name' => $service->user->name,
+                    'booked_on' => Carbon::parse($service->created_at)->format('d-m-Y'),
+                    'status' => $service->status,
+                    'extra_data' => json_decode($service->extra_data),
+                    'service' => null,
+                    'service_type' => null,
+                ]);
+            }
+        }
+        // return $_bookedServices;
+        $title = 'All Booking Request';
+        return view('users.booking_request', compact('title', '_bookedServices'));
+    }
+
+    public function updateBookedService(Request $request, string $id)
+    {
+        try {
+            $bookedService = UserBookingService::findOrFail($id);
+            $credentials = $request->validate([
+                'status' => ['required']
+            ]);
+            
+            $bookedService->status = $request->status;
+            if($bookedService->save()) {
+                return redirect()->back();
             }
     
             return back()->withErrors([

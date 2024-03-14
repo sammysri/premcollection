@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,33 @@ use App\Http\Controllers\ApiController;
 //     return $request->user();
 // });
 
-Route::post('/login',  [ApiController::class, 'apiLogin']);
+Route::post('/send-login-otp',  [ApiController::class, 'sendLoginOtp']);
+Route::post('/verify-login-otp',  [ApiController::class, 'verifyLoginOtp']);
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/logout',  [ApiController::class, 'getLogout']);
+    Route::get('/store-list',  [ApiController::class, 'getAllStores']);
+    Route::post('/apply-membership',  [ApiController::class, 'applyMembership']);
     Route::get('/hotels',  [ApiController::class, 'getAllHotels']);
     Route::get('/doctors',  [ApiController::class, 'getAllDoctors']);
     Route::get('/astrologers',  [ApiController::class, 'getAllAstrologers']);
     Route::get('/dinner-menus',  [ApiController::class, 'getAllDinnerMenu']);
-    Route::get('/logout',  [ApiController::class, 'getLogout']);
+    Route::get('/cars',  [ApiController::class, 'getAllCars']);
+    Route::get('/doctor-categories',  [ApiController::class, 'getAllCategories']);
+    Route::get('/my-booked-services',  [BookingController::class, 'getBookedServices']);
+    Route::post('/save-profile',  [ApiController::class, 'postSaveProfile']);
+    Route::get('/fetch-profile',  [ApiController::class, 'getProfile']);
+    Route::get('/albums',  [ApiController::class, 'getAlbums']);
+    Route::get('/album/{albumId}/images',  [ApiController::class, 'getAlbumImages']);
+    Route::get('/banners',  [ApiController::class, 'getBanners']);
+
+    foreach(['Hotel', 'Doctor', 'Astrologer', 'DinnerMenu', 'Car'] as $type) {
+        Route::group(['prefix' => '{type}'], function () {
+            Route::post('book', [BookingController::class, 'store']);
+        });
+    }    
+
+});
+Route::fallback(function () {
+    return ['messge' => 'Not Found'];
 });

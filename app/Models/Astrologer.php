@@ -17,6 +17,6 @@ class Astrologer extends Model
      */
     public function users(): MorphToMany
     {
-        return $this->morphToMany(User::class, 'user_booking_services');
+        return $this->morphToMany(User::class, 'service', 'user_booking_services', 'service_id', 'user_id');
     }
 }

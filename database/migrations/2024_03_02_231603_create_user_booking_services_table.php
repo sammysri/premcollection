@@ -16,6 +16,8 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('service_id');
             $table->string('service_type');
+            $table->enum('status', ['under-process', 'cancelled', 'confirmed']);
+            $table->text('extra_data');
             $table->softDeletes(); 
             $table->timestamps();
         });

@@ -67,4 +67,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user-details/{id}', [UserController::class, 'getuserDetails'])->name('userDetails');
     Route::post('user-details/{id}', [UserController::class, 'postUserDetails'])->name('userDetailsPost');
     
+    Route::get('booked-services', [UserController::class, 'getBookedServices'])->name('bookedServices');
+    Route::post('booked-service/{id}', [UserController::class, 'updateBookedService'])->name('bookedServiceStatusChange');
+    
 });

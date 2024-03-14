@@ -1,0 +1,2629 @@
+{
+	"info": {
+		"_postman_id": "605894f8-969f-4821-895f-498e0c3954b0",
+		"name": "PremCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1683366"
+	},
+	"item": [
+		{
+			"name": "book",
+			"item": [
+				{
+					"name": "book Astrologer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "booking_date",
+									"value": "2024-03-19",
+									"type": "text"
+								},
+								{
+									"key": "custom_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/Astrologer/book",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Astrologer",
+								"book"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "astrologer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_date",
+											"value": "2024-03-19",
+											"type": "text"
+										},
+										{
+											"key": "custom_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/Astrologer/book",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"Astrologer",
+										"book"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 09:14:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Data saved.\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "book Car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "arrival_date",
+									"value": "2024-03-19",
+									"type": "text"
+								},
+								{
+									"key": "custom_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "arrival_time",
+									"value": "13:05",
+									"type": "text"
+								},
+								{
+									"key": "number_of_guest",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "drop_location",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/Car/book",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Car",
+								"book"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "car",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "arrival_date",
+											"value": "2024-03-19",
+											"type": "text"
+										},
+										{
+											"key": "custom_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "arrival_time",
+											"value": "13:05",
+											"type": "text"
+										},
+										{
+											"key": "number_of_guest",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "drop_location",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/Car/book",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"Car",
+										"book"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 09:15:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Data saved.\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "book Doctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "booking_date",
+									"value": "2024-03-19",
+									"type": "text"
+								},
+								{
+									"key": "custom_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "patient_name",
+									"value": "teste",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/Doctor/book",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Doctor",
+								"book"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "doctor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_date",
+											"value": "2024-03-19",
+											"type": "text"
+										},
+										{
+											"key": "custom_id",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "patient_name",
+											"value": "teste",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/Doctor/book",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"Doctor",
+										"book"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 09:15:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Data saved.\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "book Hotel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "check_in_date",
+									"value": "2024-03-19",
+									"type": "text"
+								},
+								{
+									"key": "custom_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "check_out_date",
+									"value": "2024-03-19",
+									"type": "text"
+								},
+								{
+									"key": "number_of_room",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "number_of_guest",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/Hotel/book",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Hotel",
+								"book"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "hotel",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "check_in_date",
+											"value": "2024-03-19",
+											"type": "text"
+										},
+										{
+											"key": "custom_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "check_out_date",
+											"value": "2024-03-19",
+											"type": "text"
+										},
+										{
+											"key": "number_of_room",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "number_of_guest",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/Hotel/book",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"Hotel",
+										"book"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 09:16:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Data saved.\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "book DinnerMenu",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "booking_date",
+									"value": "2024-03-19",
+									"type": "text"
+								},
+								{
+									"key": "custom_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "number_of_person",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/DinnerMenu/book",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"DinnerMenu",
+								"book"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "dinner menu",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "booking_date",
+											"value": "2024-03-19",
+											"type": "text"
+										},
+										{
+											"key": "custom_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "number_of_person",
+											"value": "4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/DinnerMenu/book",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"DinnerMenu",
+										"book"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 09:16:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Data saved.\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Save Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone",
+									"value": "9876553291",
+									"type": "text"
+								},
+								{
+									"key": "whatsapp",
+									"value": "9876553291",
+									"type": "text"
+								},
+								{
+									"key": "card_number ",
+									"value": "4111111111111111111",
+									"type": "text"
+								},
+								{
+									"key": "dob",
+									"value": "2000-03-14",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "address",
+									"value": "test address",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "test bio",
+									"type": "text"
+								},
+								{
+									"key": "club_name",
+									"value": "club name ",
+									"type": "text"
+								},
+								{
+									"key": "store_id",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/save-profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"save-profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Save Profile",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "phone",
+											"value": "9876553291",
+											"type": "text"
+										},
+										{
+											"key": "whatsapp",
+											"value": "9876553291",
+											"type": "text"
+										},
+										{
+											"key": "card_number ",
+											"value": "4111111111111111111",
+											"type": "text"
+										},
+										{
+											"key": "dob",
+											"value": "2000-03-14",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "address",
+											"value": "test address",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "test bio",
+											"type": "text"
+										},
+										{
+											"key": "club_name",
+											"value": "club name ",
+											"type": "text"
+										},
+										{
+											"key": "store_id",
+											"value": "2",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/save-profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"save-profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 14 Mar 2024 19:49:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Saved successfully\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"data\": {\n            \"id\": 11,\n            \"name\": \"User Two\",\n            \"email\": \"user2@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone_verified_at\": null,\n            \"role\": \"user\",\n            \"active\": 1,\n            \"otp\": null,\n            \"deleted_at\": null,\n            \"created_at\": \"2024-03-09T19:08:13.000000Z\",\n            \"updated_at\": \"2024-03-12T19:27:16.000000Z\",\n            \"user_details\": {\n                \"id\": 2,\n                \"user_id\": 11,\n                \"phone\": \"9876553291\",\n                \"whatsapp\": \"9876553291\",\n                \"card_number\": null,\n                \"dob\": \"2000-03-14\",\n                \"image\": \"http://localhost:8000/user-images/1710103666.jpg\",\n                \"address\": \"test address\",\n                \"bio\": \"test bio\",\n                \"club_name\": \"club name\",\n                \"store_id\": null,\n                \"store_name\": null,\n                \"deleted_at\": null,\n                \"created_at\": \"2024-03-10T20:47:46.000000Z\",\n                \"updated_at\": \"2024-03-14T19:49:16.000000Z\",\n                \"store\": null\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/fetch-profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fetch-profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "fetch profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/fetch-profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"fetch-profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 14 Mar 2024 19:48:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Data fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"data\": {\n            \"id\": 11,\n            \"name\": \"User Two\",\n            \"email\": \"user2@gmail.com\",\n            \"email_verified_at\": null,\n            \"phone_verified_at\": null,\n            \"role\": \"user\",\n            \"active\": 1,\n            \"otp\": null,\n            \"deleted_at\": null,\n            \"created_at\": \"2024-03-09T19:08:13.000000Z\",\n            \"updated_at\": \"2024-03-12T19:27:16.000000Z\",\n            \"user_details\": {\n                \"id\": 2,\n                \"user_id\": 11,\n                \"phone\": \"9876553291\",\n                \"whatsapp\": \"9876553291\",\n                \"card_number\": null,\n                \"dob\": \"2000-03-14\",\n                \"image\": \"http://localhost:8000/user-images/1710103666.jpg\",\n                \"address\": \"test address\",\n                \"bio\": \"test bio\",\n                \"club_name\": \"club name\",\n                \"store_id\": 2,\n                \"store_name\": null,\n                \"deleted_at\": null,\n                \"created_at\": \"2024-03-10T20:47:46.000000Z\",\n                \"updated_at\": \"2024-03-14T19:46:56.000000Z\",\n                \"store\": {\n                    \"id\": 2,\n                    \"name\": \"Dankuni Store\",\n                    \"image\": \"http://localhost:8000/store-images/1710013991.webp\",\n                    \"address\": \"Dankuni\",\n                    \"active\": 1,\n                    \"deleted_at\": null,\n                    \"created_at\": \"2024-03-09T19:52:26.000000Z\",\n                    \"updated_at\": \"2024-03-09T19:53:22.000000Z\"\n                }\n            }\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "services",
+			"item": [
+				{
+					"name": "cars",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/cars",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "cars",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/cars",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"cars"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 19:32:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"cars\": [\n            {\n                \"id\": 1,\n                \"name\": \"SUV Car\",\n                \"image\": \"http://localhost:8000/car-images/1710008633.webp\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "hotels",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/hotels",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"hotels"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "hotels",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/hotels",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"hotels"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 19:23:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"hotels\": [\n            {\n                \"id\": 1,\n                \"name\": \"The Park\",\n                \"image\": \"http://localhost:8000/hotel-images/1710009312.jpg\",\n                \"price_text\": \"₹5500 onwards\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "doctors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/doctors?category_id=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"doctors"
+							],
+							"query": [
+								{
+									"key": "category_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "doctors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/doctors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 19:24:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"doctors\": [\n            {\n                \"id\": 1,\n                \"name\": \"Dr. Sudip Kar\",\n                \"degree\": \"MD., DIP, FCCP\",\n                \"image\": \"https://placehold.co/50x50/png\",\n                \"experience\": \"21 + Years\",\n                \"categories\": [\n                    {\n                        \"id\": 3,\n                        \"name\": \"Orthopedic\",\n                        \"active\": 1,\n                        \"deleted_at\": null,\n                        \"created_at\": \"2024-03-09T18:46:49.000000Z\",\n                        \"updated_at\": \"2024-03-09T18:46:49.000000Z\",\n                        \"pivot\": {\n                            \"doctor_id\": 1,\n                            \"category_id\": 3\n                        }\n                    }\n                ]\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "doctor-categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/doctor-categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"doctor-categories"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "doctor-categories",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/doctor-categories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor-categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 19:48:12 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"categories\": [\n            {\n                \"id\": 3,\n                \"name\": \"Orthopedic\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Radiologist\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "astrologers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/astrologers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"astrologers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "astrologers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/astrologers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"astrologers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 19:25:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"astrologers\": [\n            {\n                \"id\": 2,\n                \"name\": \"Mr. Santosh Sing\",\n                \"image\": \"http://localhost:8000/astrologer-images/1710009596.jpg\",\n                \"experience\": \"25+ Years\"\n            },\n            {\n                \"id\": 1,\n                \"name\": \"Mr. Santosh Tiwari\",\n                \"image\": \"http://localhost:8000/astrologer-images/1710009552.jpg\",\n                \"experience\": \"21 + Years\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "dinner-menu",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/dinner-menus",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dinner-menus"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "dinner-menu",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/dinner-menus",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"dinner-menus"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 19:26:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"dinner_menus\": [\n            {\n                \"id\": 2,\n                \"name\": \"Paneer Tikka\",\n                \"image\": \"http://localhost:8000/menu-images/1710010352.jpg\"\n            },\n            {\n                \"id\": 1,\n                \"name\": \"Fried Rice\",\n                \"image\": \"http://localhost:8000/menu-images/1710010366.jpg\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "send login otp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "user2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/send-login-otp",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"send-login-otp"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "send login otp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "user2@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/send-login-otp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"send-login-otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 19:19:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"OTP send\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"otp\": 7139\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "logout",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 19:26:37 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Logout!\",\n    \"error\": [],\n    \"success\": false,\n    \"code\": 200,\n    \"data\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "verify login otp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "user2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "otp",
+									"value": "1238",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/verify-login-otp",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"verify-login-otp"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "verify login otp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "user2@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "otp",
+											"value": "7139",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/verify-login-otp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"verify-login-otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 12 Mar 2024 19:20:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"OTP match successfully.\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"token\": \"4|AVzTCdEKn6cMGyCodwg54k5OdLEzKRL1ADmmlTMF025c9333\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "all stores",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/store-list",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"store-list"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "all stores",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/store-list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"store-list"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 12 Mar 2024 19:21:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"stores\": {\n            \"1\": \"Kolkata Store\",\n            \"2\": \"Dankuni Store\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Albums",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/albums",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"albums"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "albums",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/albums",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"albums"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 14 Mar 2024 19:57:48 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"albums\": [\n            {\n                \"id\": 2,\n                \"name\": \"Puri\",\n                \"image\": \"http://localhost:8000/album-images/1710097246.jpg\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Banners",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/banners",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"banners"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "albums",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/albums",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"albums"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 14 Mar 2024 19:57:48 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"albums\": [\n            {\n                \"id\": 2,\n                \"name\": \"Puri\",\n                \"image\": \"http://localhost:8000/album-images/1710097246.jpg\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "album images",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{url}}/album/2/images",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"album",
+						"2",
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my-booked-services",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/my-booked-services",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"my-booked-services"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "my-booked-services",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/my-booked-services",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"my-booked-services"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 14 Mar 2024 19:53:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "58"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Successfully fetch\",\n    \"error\": [],\n    \"success\": true,\n    \"code\": 200,\n    \"data\": {\n        \"services\": [\n            {\n                \"booked_on\": \"2024-03-13T11:06:23.000000Z\",\n                \"status\": \"under-process\",\n                \"extra_data\": {\n                    \"booking_date\": \"2024-03-19\",\n                    \"patient_name\": \"teste\"\n                },\n                \"service\": {\n                    \"name\": \"Dr. Sudip Kar\",\n                    \"image\": \"https://placehold.co/50x50/png\"\n                },\n                \"service_type\": \"Doctor\"\n            },\n            {\n                \"booked_on\": \"2024-03-13T11:20:24.000000Z\",\n                \"status\": \"under-process\",\n                \"extra_data\": {\n                    \"booking_date\": \"2024-03-19\",\n                    \"patient_name\": \"teste\"\n                },\n                \"service\": {\n                    \"name\": \"Dr. Sudip Kar\",\n                    \"image\": \"https://placehold.co/50x50/png\"\n                },\n                \"service_type\": \"Doctor\"\n            },\n            {\n                \"booked_on\": \"2024-03-13T11:23:40.000000Z\",\n                \"status\": \"under-process\",\n                \"extra_data\": {\n                    \"booking_date\": \"2024-03-19\"\n                },\n                \"service\": {\n                    \"name\": \"Mr. Santosh Sing\",\n                    \"image\": \"http://localhost:8000/astrologer-images/1710009596.jpg\"\n                },\n                \"service_type\": \"Astrologer\"\n            },\n            {\n                \"booked_on\": \"2024-03-13T11:23:43.000000Z\",\n                \"status\": \"under-process\",\n                \"extra_data\": {\n                    \"arrival_date\": \"2024-03-19\",\n                    \"arrival_time\": \"13:05\",\n                    \"number_of_guest\": \"4\",\n                    \"drop_location\": \"test\"\n                },\n                \"service\": {\n                    \"name\": \"MUV1\",\n                    \"image\": \"http://localhost:8000/car-images/1710008696.webp\"\n                },\n                \"service_type\": \"Car\"\n            },\n            {\n                \"booked_on\": \"2024-03-13T11:24:14.000000Z\",\n                \"status\": \"under-process\",\n                \"extra_data\": {\n                    \"check_in_date\": \"2024-03-19\",\n                    \"check_out_date\": \"2024-03-19\",\n                    \"number_of_room\": \"2\",\n                    \"number_of_guest\": \"3\"\n                },\n                \"service\": {\n                    \"name\": \"The Park1\",\n                    \"image\": \"http://localhost:8000/hotel-images/1710009346.jpg\"\n                },\n                \"service_type\": \"Hotel\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "3|yxTZwffQNFq2pbZBmW21mZDozPuqyJ1scHwmDGtSbe823287",
+			"type": "string"
+		}
+	]
+}

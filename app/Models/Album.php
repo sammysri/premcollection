@@ -12,9 +12,6 @@ class Album extends Model
     use HasFactory, SoftDeletes;
     protected $guarded = [];
     
-    /**
-    * Get the comments for the blog post.
-    */
     public function images(): HasMany
     {
         return $this->hasMany(AlbumImage::class);

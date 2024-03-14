@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -25,7 +26,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'active'
+        'active',
+        'otp'
     ];
 
     /**
@@ -53,7 +55,7 @@ class User extends Authenticatable
      */
     public function bookedHotels(): MorphToMany
     {
-        return $this->morphedByMany(Hotel::class, 'user_booking_services');
+        return $this->morphedByMany(Hotel::class, 'service', 'user_booking_services')->withPivot('extra_data', 'status');
     }
  
     /**
@@ -61,7 +63,7 @@ class User extends Authenticatable
      */
     public function bookedDoctors(): MorphToMany
     {
-        return $this->morphedByMany(Doctor::class, 'user_booking_services');
+        return $this->morphedByMany(Doctor::class, 'service', 'user_booking_services')->withPivot('extra_data', 'status');
     }
 
     /**
@@ -69,21 +71,33 @@ class User extends Authenticatable
      */
     public function bookedAstrologers(): MorphToMany
     {
-        return $this->morphedByMany(Astrologer::class, 'user_booking_services');
+        return $this->morphedByMany(Astrologer::class, 'service', 'user_booking_services')->withPivot('extra_data', 'status');
     }
     /**
      * Get all of the dinner menu that are booked by user.
      */
     public function bookedDinnerMenu(): MorphToMany
     {
-        return $this->morphedByMany(DinnerMenu::class, 'user_booking_services');
+        return $this->morphedByMany(DinnerMenu::class, 'service', 'user_booking_services')->withPivot('extra_data', 'status');
+    }
+    /**
+     * Get all of the car that are booked by user.
+     */
+    public function bookedCar(): MorphToMany
+    {
+        return $this->morphedByMany(Car::class, 'service', 'user_booking_services')->withPivot('extra_data', 'status');
     }
     /**
      * Get the details associated with the user.
      */
     public function userDetails(): HasOne
     {
-        return $this->hasOne(UserDetails::class, '');
+        return $this->hasOne(UserDetails::class, 'user_id');
+    }
+
+    public function bookedServices(): HasMany
+    {
+        return $this->hasMany(UserBookingService::class, 'user_id');
     }
     
 }
