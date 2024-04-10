@@ -25,7 +25,8 @@ class ApiController extends Controller
     public function sendLoginOtp(Request $request) {
         $attr = Validator::make($request->all(), [
             'email' => 'required|string|email',
-            'password' => 'required|string|min:8'
+            'password' => 'required|string|min:8',
+            'name' => 'required_if:new_user,=,1'
         ]);
         if ($attr->fails()) {
             $res = $this->customResponse('Validation failed', $attr->messages(), false, 400);
@@ -50,6 +51,29 @@ class ApiController extends Controller
             }
         }
         else {
+
+            if($request->new_user == 1) {
+                $otp = rand(1000,9999);
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                    'active' => 1,
+                    'otp' => $otp,
+                    'role' => 'user'
+                ]);
+                if($user) {
+                    $res = $this->customResponse('OTP send', [], true, 200, 
+                        ['otp' => $otp]
+                    );
+                    return response()->json($res);
+                }
+                else {
+                    $res = $this->customResponse('Something went wrong! unable to create new user', [], false, 400);
+                    return response()->json($res);
+                }
+            }
+
             $res = $this->customResponse('Email Address is not Registered', [], false, 404);
             return response()->json($res);
         }
@@ -202,6 +226,7 @@ class ApiController extends Controller
             'store_id' => ['sometimes','nullable','exists:stores,id'],            
             'card_number' => ['nullable', 'unique:user_details,card_number,'.$request->user()->id]
         ]);
+        //return $request->all();
         if ($attr->fails()) {
             $res = $this->customResponse('Validation failed', $attr->messages(), false, 400);
             return response()->json($res);
