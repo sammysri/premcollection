@@ -24,57 +24,25 @@ class ApiController extends Controller
     
     public function sendLoginOtp(Request $request) {
         $attr = Validator::make($request->all(), [
-            'email' => 'required|string|email',
-            'password' => 'required|string|min:8',
-            'name' => 'required_if:new_user,=,1'
+            'email' => 'required|string|email'
         ]);
         if ($attr->fails()) {
             $res = $this->customResponse('Validation failed', $attr->messages(), false, 400);
             return response()->json($res);
         }
-        $user = User::where('email', $request->email)->where('role', 'user')->first();
+        $user = User::where('email', $request->email)->whereNotNull('email_verified_at')->where('role', 'user')->first();
         if($user) {
-            // return $user;
-            if(Hash::check($request->password, $user->password)) {
-                $otp = rand(1000,9999);
-                $user->update([
-                    'otp' => $otp
-                ]);
-                $res = $this->customResponse('OTP send', [], true, 200, 
-                    ['otp' => $otp]
-                );
-                return response()->json($res);
-            }
-            else {
-                $res = $this->customResponse('Password mismatch', [], false, 400);
-                return response()->json($res);
-            }
+            $otp = rand(1000,9999);
+            $user->update([
+                'otp' => $otp
+            ]);
+            $res = $this->customResponse('OTP send', [], true, 200, 
+                ['otp' => $otp]
+            );
+            return response()->json($res);
         }
         else {
-
-            if($request->new_user == 1) {
-                $otp = rand(1000,9999);
-                $user = User::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'password' => bcrypt($request->password),
-                    'active' => 1,
-                    'otp' => $otp,
-                    'role' => 'user'
-                ]);
-                if($user) {
-                    $res = $this->customResponse('OTP send', [], true, 200, 
-                        ['otp' => $otp]
-                    );
-                    return response()->json($res);
-                }
-                else {
-                    $res = $this->customResponse('Something went wrong! unable to create new user', [], false, 400);
-                    return response()->json($res);
-                }
-            }
-
-            $res = $this->customResponse('Email Address is not Registered', [], false, 404);
+            $res = $this->customResponse('The email address is either not verified or not registered.', [], false, 404);
             return response()->json($res);
         }
     }
@@ -88,7 +56,7 @@ class ApiController extends Controller
             $res = $this->customResponse('Validation failed', $attr->messages(), false, 400);
             return response()->json($res);
         }
-        $user = User::where('email', $request->email)->where('otp', $request->otp)->first();
+        $user = User::where('email', $request->email)->whereNotNull('email_verified_at')->where('otp', $request->otp)->first();
         if($user) {
             $user->update([
                 'otp' => null
@@ -124,8 +92,12 @@ class ApiController extends Controller
     
     public function applyMembership(Request $request) {
         $attr = Validator::make($request->all(), [
-            'email' => 'required|string|email',
-            'password' => 'required|string|min:8'
+            'name' => 'required|string|max:100',
+            'email' => 'required|string|email|max:100|unique:users',
+            'phone' => 'required|string|max:12',
+            'dob' => 'required|date|before:today',
+            'club_name' => 'nullable|string|max:191',
+            'visit_before' => 'required|boolean',
         ]);
         if ($attr->fails()) {
             $res = $this->customResponse('Validation failed', $attr->messages(), false, 400);
@@ -133,24 +105,25 @@ class ApiController extends Controller
         }
         $user = User::where('email', $request->email)->where('role', 'user')->first();
         if($user) {
-            // return $user;
-            if(Hash::check($request->password, $user->password)) {
-                $otp = 9999; //rand(1000,9999)
-                $user->update([
-                    'otp' => $otp
-                ]);
-                $res = $this->customResponse('OTP send', [], true, 200, 
-                    ['otp' => $otp]
-                );
-                return response()->json($res);
-            }
-            else {
-                $res = $this->customResponse('Password mismatch', [], false, 400);
-                return response()->json($res);
-            }
-        }
-        else {
-            $res = $this->customResponse('Email Address is not Registered', [], false, 404);
+            $res = $this->customResponse('The email address is already registered. You can log in after verification.', [], false, 404);
+            return response()->json($res);
+        }else {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make('sam@2024'),
+                'role' => 'user'
+            ]);
+            $userDetail = new UserDetails([
+                'user_id' => $user->id,
+                'phone' => $request->phone,
+                'dob' => $request->dob,
+                'club_name' => $request->club_name
+            ]);
+            $userDetail->save();
+            $res = $this->customResponse('Your request has been received. You can log in after you receive the verification email.', [], true, 200, 
+                ['otp' => $user]
+            );
             return response()->json($res);
         }
     }

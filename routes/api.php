@@ -22,11 +22,11 @@ use App\Http\Controllers\BookingController;
 
 Route::post('/send-login-otp',  [ApiController::class, 'sendLoginOtp']);
 Route::post('/verify-login-otp',  [ApiController::class, 'verifyLoginOtp']);
+Route::post('/apply-membership',  [ApiController::class, 'applyMembership']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/logout',  [ApiController::class, 'getLogout']);
     Route::get('/store-list',  [ApiController::class, 'getAllStores']);
-    Route::post('/apply-membership',  [ApiController::class, 'applyMembership']);
     Route::get('/hotels',  [ApiController::class, 'getAllHotels']);
     Route::get('/doctors',  [ApiController::class, 'getAllDoctors']);
     Route::get('/astrologers',  [ApiController::class, 'getAllAstrologers']);

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('club_name')->nullable();
             $table->integer('store_id')->nullable();
             $table->text('store_name')->nullable();
+            $table->boolean('visit_before')->default(true);
             $table->softDeletes(); 
             $table->timestamps();
         });
