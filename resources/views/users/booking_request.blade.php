@@ -31,7 +31,7 @@
                         <td class="text-center" >{{$_service['user_name']}}</td>
                         <td class="text-center" >
                             {{$_service['service_type']}}
-                            <div class="small text-medium-emphasis">{{$_service['service']['name']}}</div>
+                            @if($_service['service_type'] != 'DinnerMenu' || $_service['service_type'] != 'Car')<div class="small text-medium-emphasis">{{$_service['service']['name']}}</div> @endif
                         </td>
                         <td class="text-center" >
                             @foreach($_service['extra_data'] as $_serviceKey => $_serviceData)

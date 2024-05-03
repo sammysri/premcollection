@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_booking_services', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('service_id');
+            $table->integer('service_id')->nullable();
             $table->string('service_type');
             $table->enum('status', ['under-process', 'cancelled', 'confirmed']);
             $table->text('extra_data');

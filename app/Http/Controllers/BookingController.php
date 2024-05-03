@@ -44,7 +44,7 @@ class BookingController extends Controller
         else if($type == 'Hotel') {
             $validateResArr = [
                 'check_in_date' => 'required|date',
-                'check_in_date' => 'required|date',
+                'check_out_date' => 'required|date',
                 'number_of_room' => 'required|numeric',
                 'number_of_guest' => 'required|numeric',
                 'custom_id' => 'required'
@@ -54,7 +54,7 @@ class BookingController extends Controller
             $validateResArr = [
                 'booking_date' => 'required|date',
                 'number_of_person' => 'required|numeric',
-                'custom_id' => 'required'
+                // 'custom_id' => 'required'
             ];
         }
         else if($type == 'Car') {
@@ -63,7 +63,7 @@ class BookingController extends Controller
                 'arrival_time' => 'required',
                 'number_of_guest' => 'required|numeric',
                 'drop_location' => 'required',
-                'custom_id' => 'required'
+                // 'custom_id' => 'required'
             ];
         }
         $attr = Validator::make($request->all(), $validateResArr);
@@ -97,8 +97,14 @@ class BookingController extends Controller
                 'arrival_time'=>$request->arrival_time, 'number_of_guest'=>$request->number_of_guest, 'drop_location'=>$request->drop_location
             ]);
         }
-
-        $data = $exist->users()->save($request->user(), ['status' => 'under-process', 'extra_data' => $arr, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+        if($type == 'DinnerMenu') {
+            UserBookingService::create(['user_id'=>$request->user()->id,'service_type' => 'App\Models\DinnerMenu','status' => 'under-process', 'extra_data' => $arr, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+        }elseif($type == 'Car') {
+            UserBookingService::create(['user_id'=>$request->user()->id,'service_type' => 'App\Models\Car','status' => 'under-process', 'extra_data' => $arr, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+        }
+        else{
+            $data = $exist->users()->save($request->user(), ['status' => 'under-process', 'extra_data' => $arr, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+        }
         
         $res = $this->customResponse('Data saved.', [], true, 200, 
             []

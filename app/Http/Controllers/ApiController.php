@@ -8,6 +8,8 @@ use App\Models\{User, UserDetails, Hotel, Doctor, Astrologer, DinnerMenu, Store,
 use Exception;
 use App\Http\Traits\ImageTrait;
 use Carbon\Carbon; 
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image as Intervention;
 
 class ApiController extends Controller
 {
@@ -21,7 +23,9 @@ class ApiController extends Controller
             'data' => $data
         ];
     }
-    
+    public function hello(){
+        return 'Hello world';
+    }
     public function sendLoginOtp(Request $request) {
         $attr = Validator::make($request->all(), [
             'email' => 'required|string|email'
@@ -46,7 +50,7 @@ class ApiController extends Controller
             return response()->json($res);
         }
     }
-
+// 64|kaimAyQtSdrWvmPUEyyeypgv7uiXDNHwU0hsVWm00862c0cc
     public function verifyLoginOtp(Request $request) {
         $attr = Validator::make($request->all(), [
             'email' => 'required|string|email',
@@ -93,7 +97,7 @@ class ApiController extends Controller
     public function applyMembership(Request $request) {
         $attr = Validator::make($request->all(), [
             'name' => 'required|string|max:100',
-            'email' => 'required|string|email|max:100|unique:users',
+            'email' => 'required|string|email|max:100',
             'phone' => 'required|string|max:12',
             'dob' => 'required|date|before:today',
             'club_name' => 'nullable|string|max:191',
@@ -106,6 +110,16 @@ class ApiController extends Controller
         $user = User::where('email', $request->email)->where('role', 'user')->first();
         if($user) {
             $res = $this->customResponse('The email address is already registered. You can log in after verification.', [], false, 404);
+            if(!$user->userDetails()->first()){
+                $userDetail = new UserDetails([
+                    'user_id' => $user->id,
+                    'phone' => $request->phone,
+                    'dob' => $request->dob,
+                    'club_name' => $request->club_name,
+                    'visit_before' => $request->visit_before
+                ]);
+                $userDetail->save();
+            }
             return response()->json($res);
         }else {
             $user = User::create([
@@ -118,7 +132,8 @@ class ApiController extends Controller
                 'user_id' => $user->id,
                 'phone' => $request->phone,
                 'dob' => $request->dob,
-                'club_name' => $request->club_name
+                'club_name' => $request->club_name,
+                'visit_before' => $request->visit_before
             ]);
             $userDetail->save();
             $res = $this->customResponse('Your request has been received. You can log in after you receive the verification email.', [], true, 200, 
@@ -184,9 +199,15 @@ class ApiController extends Controller
     }
 
     public function getProfile(Request $request) {
+        $user = $request->user()->load('userDetails.store');
+        if ($user->userDetails->image) {
+            $user->userDetails->image = asset('user-images/' . $user->userDetails->image);
+        } else {
+            $user->userDetails->image = 'https://placehold.co/50x50/png';
+        }
         $res = $this->customResponse('Data fetch', [], true, 200, 
             [
-                'data' => $request->user()->load('userDetails.store')
+                'data' => $user
             ]
         );
         return response()->json($res);
@@ -197,8 +218,9 @@ class ApiController extends Controller
             'phone' => ['nullable', 'numeric'],
             'whatsapp' => ['nullable', 'numeric'],
             'store_id' => ['sometimes','nullable','exists:stores,id'],            
-            'card_number' => ['nullable', 'unique:user_details,card_number,'.$request->user()->id]
+            // 'card_number' => ['nullable', 'unique:user_details,card_number,'.$request->user()->id]
         ]);
+        //first 4 numbers same and more 4 digits random
         //return $request->all();
         if ($attr->fails()) {
             $res = $this->customResponse('Validation failed', $attr->messages(), false, 400);
@@ -207,22 +229,29 @@ class ApiController extends Controller
         
         $user = $request->user();
         $details = $user->userDetails()->first();
-        if($details) {
-
-        }
-        else {
+        if(!$details){
             $details = new UserDetails(); 
         }
         $details->phone = $request->phone ? $request->phone : null;
         $details->whatsapp = $request->whatsapp ? $request->whatsapp : null;
-        $details->card_number = $request->card_number ? $request->card_number : null;
+        // $details->card_number = $request->card_number ? $request->card_number : null;
         $details->dob = $request->dob ? Carbon::parse($request->dob)->format('y-m-d') : null;
         $details->address = $request->address ? $request->address : null;
         $details->bio = $request->bio ? $request->bio : null;
         $details->club_name = $request->club_name ? $request->club_name : null;
-        $details->store_id = $request->store_id ? $request->store_id : null;
-        $details->image = $request->image ? $this->upload($request, 'user-images') : ($details && $details->id ? $details->image : 'https://placehold.co/50x50/png');
-        $details->club_name = $request->club_name ? $request->club_name : null;
+        // $details->store_id = $request->store_id ? $request->store_id : null;
+        // $details->image = $request->image ? $this->upload($request, 'user-images') : ($details && $details->id ? $details->image : 'https://placehold.co/50x50/png');
+        // $details->club_name = $request->club_name ? $request->club_name : null;
+        if ($request->hasFile('image')){
+            $token = strtolower(Str::random(20));
+            $ext = $request->image->getClientOriginalExtension();
+            $name = $user->id.'_'.$token.'.'.$ext;
+            $path = 'user-images/';
+            Intervention::make($request->image)->resize(400,null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->encode($ext)->save($path.$name);
+            $details->image = $name;
+        }
         //return $details;
         if($user->userDetails()->save($details)) {
             $res = $this->customResponse('Saved successfully', [], true, 200, 

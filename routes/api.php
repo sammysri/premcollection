@@ -20,6 +20,7 @@ use App\Http\Controllers\BookingController;
 //     return $request->user();
 // });
 
+Route::get('/hello',  [ApiController::class, 'hello']);
 Route::post('/send-login-otp',  [ApiController::class, 'sendLoginOtp']);
 Route::post('/verify-login-otp',  [ApiController::class, 'verifyLoginOtp']);
 Route::post('/apply-membership',  [ApiController::class, 'applyMembership']);
