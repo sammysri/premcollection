@@ -12,7 +12,7 @@ use App\Models\Store;
 use Illuminate\Support\Facades\DB;
 use App\Http\Traits\ImageTrait;
 use Carbon\Carbon; 
-
+use Illuminate\Support\Facades\Mail;
 class UserController extends Controller
 {
     use ImageTrait;
@@ -194,9 +194,24 @@ class UserController extends Controller
             $user->email = $request->email;
             if( $request->reset_password && $request->reset_password == 1 ) $user->password = bcrypt($request->password);
             $user->active = $request->has('active') ? ($request->active == 1 ? 1 : 0) : 0;
+            if($request->filled('active')){
+                $user->email_verified_at = Carbon::now();
+                $user->active = $request->active;
+            }else{
+                $user->email_verified_at = null;
+                $user->active = $request->active;
+            }
 
             if($user->save()) {
                 DB::commit();
+                
+            
+                try{
+                    $email = $request->email;
+                    Mail::send('mails.confirm', ['name' => $request->name], function($message) use ($email) {    
+                        $message->to($email)->subject('Access Prem\'s Privileged Club Membership via Mobile App');    
+                    });
+                } catch(\Exception $e){}
                 return back()->withErrors([
                     'user_error' => 'Saved successfully.',
                 ])->withInput();
