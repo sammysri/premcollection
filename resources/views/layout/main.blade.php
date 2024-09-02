@@ -1,36 +1,14 @@
-<!DOCTYPE html><!--
-* CoreUI - Free Bootstrap Admin Template
-* @version v4.2.2
-* @link https://coreui.io/product/free-bootstrap-admin-template/
-* Copyright (c) 2023 creativeLabs Łukasz Holeczek
-* Licensed under MIT (https://github.com/coreui/coreui-free-bootstrap-admin-template/blob/main/LICENSE)
---><!-- Breadcrumb-->
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <base href="./">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
-    <meta name="author" content="Łukasz Holeczek">
-    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <meta name="description" content="Webmaddy Admin Template">
+    <meta name="author" content="Webmaddy">
     <title>Prems Collection Admin Panel</title>
-    <link rel="apple-touch-icon" sizes="57x57" href="{{asset('assets/favicon/apple-icon-57x57.png')}}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{asset('assets/favicon/apple-icon-60x60.png')}}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{asset('assets/favicon/apple-icon-72x72.png')}}">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/favicon/apple-icon-76x76.png')}}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('assets/favicon/apple-icon-114x114.png')}}">
-    <link rel="apple-touch-icon" sizes="120x120" href="{{asset('assets/favicon/apple-icon-120x120.png')}}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{asset('assets/favicon/apple-icon-144x144.png')}}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{asset('assets/favicon/apple-icon-152x152.png')}}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('assets/favicon/apple-icon-180x180.png')}}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{asset('assets/favicon/android-icon-192x19')}}2.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/favicon/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{asset('assets/favicon/favicon-96x96.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/favicon/favicon-16x16.png')}}">
-    <link rel="manifest" href="{{asset('assets/favicon/manifest.json')}}">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{{asset('assets/favicon/ms-icon-144x144.png')}}">
+    
+    <link rel="icon" type="image/png" href="https://premscollectionskolkata.com/img/favicon.png">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendors styles-->
     <link rel="stylesheet" href="{{asset('vendors/simplebar/css/simplebar.css')}}">
@@ -44,13 +22,8 @@
   <body>
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
       <div class="sidebar-brand d-none d-md-flex">
-        PANEL
-        <!-- <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-          <use xlink:href="assets/brand/coreui.svg#full"></use>
-        </svg>
-        <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
-          <use xlink:href="assets/brand/coreui.svg#signet"></use>
-        </svg> -->
+          <img class="sidebar-brand-full" src="https://premscollectionskolkata.com/img/logo-ppc-yellow.webp" width="118" height="46">
+          <img class="sidebar-brand-narrow" width="46" height="46" src="https://premscollectionskolkata.com/img/logo-ppc-yellow.webp" >
       </div>
       <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
         <li class="nav-item">
@@ -61,15 +34,16 @@
             <!-- <span class="badge badge-sm bg-info ms-auto">NEW</span> -->
           </a>
         </li>
-        <li class="nav-title">General</li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="colors.html">
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('bookedServices')}}">
             <svg class="nav-icon">
-              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-drop')}}"></use>
-            </svg> Colors
+              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer')}}"></use>
+            </svg> Booking Request
+            <!-- <span class="badge badge-sm bg-info ms-auto">NEW</span> -->
           </a>
-        </li> -->
-       
+        </li>
+        <li class="nav-title">General</li>
+        
         <li class="nav-group">
           <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
@@ -159,27 +133,17 @@
             <li class="nav-item"><a class="nav-link" href="{{route('albums.index')}}"><span class="nav-icon"></span> All Albums</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{route('bookedServices')}}">
+        <li class="nav-group">
+          <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
-              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer')}}"></use>
-            </svg> Booking Request
-            <!-- <span class="badge badge-sm bg-info ms-auto">NEW</span> -->
+              <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
+            </svg> Admin Management
           </a>
+          <ul class="nav-group-items">
+            <li class="nav-item"><a class="nav-link" href="{{url('admin/management/create')}}"><span class="nav-icon"></span> Add New Admin</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url('admin/management')}}"><span class="nav-icon"></span> All Admins</a></li>
+          </ul>
         </li>
-        @admin
-          <li class="nav-group">
-            <a class="nav-link nav-group-toggle" href="#">
-              <svg class="nav-icon">
-                <use xlink:href="{{asset('vendors/@coreui/icons/svg/free.svg#cil-cursor')}}"></use>
-              </svg> Admin Management
-            </a>
-            <ul class="nav-group-items">
-              <li class="nav-item"><a class="nav-link" href="{{url('admin/management/create')}}"><span class="nav-icon"></span> Add New Admin</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{url('admin/management')}}"><span class="nav-icon"></span> All Admins</a></li>
-            </ul>
-          </li>
-        @endadmin
         <li class="nav-group">
           <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
@@ -215,10 +179,6 @@
                 <div class="dropdown-header bg-light py-2">
                   <div class="fw-semibold">Account</div>
                 </div>
-                <!-- <div class="dropdown-divider"></div><a class="dropdown-item" href="#"> -->
-                <!-- <svg class="icon me-2">
-                  <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                </svg> Lock Account</a> -->
                 @auth
                   <a class="dropdown-item" href="{{route('changePassword')}}">
                     <svg class="icon me-2">
@@ -236,24 +196,13 @@
             </li>
           </ul>
         </div>
-        <!-- <div class="header-divider"></div>
-        <div class="container-fluid">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb my-0 ms-2">
-              <li class="breadcrumb-item">
-                <span>Home</span>
-              </li>
-              <li class="breadcrumb-item active"><span>Dashboard</span></li>
-            </ol>
-          </nav>
-        </div> -->
       </header>
 
       @yield('content')
 
       <footer class="footer">
-        <div><a href="#">NAME </a><a href="#">Admin Panel</a> © 2024 creativeLabs.</div>
-        <div class="ms-auto">Developed by&nbsp;<a href="#">Paul</a></div>
+        <div><a href="https://premscollectionskolkata.com/">Prems Collection Admin Panel</a> © {{now()->year}}.</div>
+        <div class="ms-auto">Developed by&nbsp;<a target="_blank" href="https://www.webmaddy.com/">Webmaddy</a></div>
       </footer>
     </div>
     <!-- CoreUI and necessary plugins-->

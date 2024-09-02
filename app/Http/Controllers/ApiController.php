@@ -91,7 +91,7 @@ class ApiController extends Controller
     }
 
     public function getLogout(Request $request) {
-        $request->user()->currentAccessToken()->delete();
+        return $request->user()->currentAccessToken()->delete();
         //return $request->user()->tokens()->delete();
         $res = $this->customResponse('Logout!', [], false, 200, 
             []

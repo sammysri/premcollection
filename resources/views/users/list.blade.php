@@ -29,7 +29,7 @@
                         <td>{{$user->id}}</td>
                         <td class="text-center">{{$user->name}}</td>
                         <td class="text-center">{{$user->email}}</td>
-                        <td class="text-center">{{$user->active == 1 ? 'Yes' : ($user->active == 0 ? 'No' : '')}}
+                        <td class="text-center">{{(is_null($user->email_verified_at))? 'No' : 'Yes'}}
                           </td>
                         <td>
                           <div class="dropdown">

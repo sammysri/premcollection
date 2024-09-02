@@ -50,8 +50,8 @@
                   <div class="mb-3">
                     <label for="active">Active</label>
                     <select class="form-control" id="active" name="active">
-                      <option value="0" {{ $user && $user->active == 0 ? 'selected' : '' }}>No</option>
-                      <option value="1" {{ $user && $user->active == 1 ? 'selected' : '' }}>Yes</option>
+                      <option value="0" {{ $user && is_null($user->email_verified_at) ? 'selected' : '' }}>No</option>
+                      <option value="1" {{ $user && !is_null($user->email_verified_at) ? 'selected' : '' }}>Yes</option>
                     </select>
                     <p><code>
                       {{ $errors->first('active') }}
